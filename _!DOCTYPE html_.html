@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Analisis Kendaraan</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background-color: #0b1a2e;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #003366;
+      padding: 20px;
+      text-align: center;
+      color: #00ff99;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+    canvas {
+      background-color: #ffffff10;
+      border-radius: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>DASHBOARD ANALISIS KENDARAAN - KOTA CIREBON</header>
+  <div class="container">
+    <canvas id="topInstansi"></canvas>
+    <canvas id="kategoriInstansi"></canvas>
+  </div>
+  <script>
+    // Bar Chart: Top 5 Instansi
+    new Chart(document.getElementById('topInstansi'), {
+      type: 'bar',
+      data: {
+        labels: ['Pemkot Cirebon', 'Dinkes Cirebon', 'Pemda Cirebon', 'Disdik Cirebon', 'PUPR Cirebon'],
+        datasets: [{
+          label: 'Jumlah Kendaraan',
+          data: [343, 141, 77, 32, 36],
+          backgroundColor: ['#00ff99', '#0099ff', '#ffcc00', '#ffffff', '#003366']
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+
+    // Pie Chart: Distribusi Kategori Instansi
+    new Chart(document.getElementById('kategoriInstansi'), {
+      type: 'pie',
+      data: {
+        labels: ['Pemerintah', 'Dinas Teknis', 'Lainnya'],
+        datasets: [{
+          data: [65, 27, 8],
+          backgroundColor: ['#003366', '#00ff99', '#ffcc00']
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
